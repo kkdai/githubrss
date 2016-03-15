@@ -1,0 +1,5 @@
+{
+	"ImportPath": "github.com/kkdai/github-star-to-rss",
+	"GoVersion": "go1.6",
+	"Deps": []
+}
