@@ -9,6 +9,8 @@ How to use it?
 =============
 
 
+
+
 Installation and Usage
 =============
 
@@ -17,8 +19,7 @@ Install
 ---------------
 
 ```go
-
-
+go get github.com/kkdai/githubrss
 ```
 
 Usage
@@ -29,11 +30,30 @@ Usage
 package main
 
 import (
-    "github.com/kkdai/nfa"
+    "github.com/kkdai/githubrss"
     "fmt"
 )
 
 func main() {
+	g := NewGithubRss("kkdai")
+	//Get latest 5 starred RSS
+	ret, err := g.GetStarred(5)
+
+	if err != nil {
+		fmt.Println("Not get starred response:", err)
+	}
+
+	fmt.Println("Starred:", ret)
+
+
+	//Get latest 5 follower RSS
+	_, err = g.GetFollower(5)
+
+	if err != nil {
+		fmt.Println("Not get follower response:", err)
+	}
+
+	fmt.Println(" get follower:", err)
 }
 
 ```
@@ -41,6 +61,7 @@ func main() {
 Inspired By
 =============
 
+- [Github API doc](https://developer.github.com/v3/users/)
 - [https://github.com/lukeforeman/fever-google-starred-importer/blob/master/import.php](https://github.com/lukeforeman/fever-google-starred-importer/blob/master/import.php)
 - [http://stackoverflow.com/questions/14893287/creating-an-rss-feed-for-github-stars](http://stackoverflow.com/questions/14893287/creating-an-rss-feed-for-github-stars)
 - [https://github.com/thomasyung/twitter-json-to-rss/blob/master/twitter_json_to_rss.php](https://github.com/thomasyung/twitter-json-to-rss/blob/master/twitter_json_to_rss.php)
