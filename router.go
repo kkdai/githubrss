@@ -18,6 +18,7 @@ const (
 	GithubAPIURL string = "https://api.github.com/users"
 	StarredAPI   string = "starred"
 	FollowerAPI  string = "followers"
+	FollowingAPI string = "following"
 )
 
 func getWithCount(url string, count int) string {
@@ -33,5 +34,9 @@ func getStarredURL(id string, count int) string {
 }
 
 func getFollowerURL(id string, count int) string {
-	return getWithCount(fmt.Sprintf("%s/%s/%s", GithubAPIURL, id, StarredAPI), count)
+	return getWithCount(fmt.Sprintf("%s/%s/%s", GithubAPIURL, id, FollowerAPI), count)
+}
+
+func getFollowingURL(id string, count int) string {
+	return getWithCount(fmt.Sprintf("%s/%s/%s", GithubAPIURL, id, FollowingAPI), count)
 }

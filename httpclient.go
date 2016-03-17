@@ -40,6 +40,12 @@ func (c *client) GetFollowerObj(resultCount int) ([]byte, error) {
 	return getHttpResponse(url)
 }
 
+func (c *client) GetFollowingObj(resultCount int) ([]byte, error) {
+	url := getFollowingURL(c.userId, resultCount)
+	log.Println("URL=", url)
+	return getHttpResponse(url)
+}
+
 func getHttpResponse(url string) ([]byte, error) {
 	client := &http.Client{}
 	request, err := http.NewRequest("GET", url, nil)

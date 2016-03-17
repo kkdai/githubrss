@@ -42,7 +42,7 @@ func getNow() string {
 func NewRssRederWithStarred(in StarredList) *RssRender {
 	r := new(RssRender)
 	r.RssTitle = "Github Starred List"
-	r.RssLink = "http://www.111.com"
+	r.RssLink = "http://github.com"
 	r.RssDesc = "RSS for Github Starred List"
 	r.RssNow = template.HTML(getNow())
 
@@ -61,9 +61,29 @@ func NewRssRederWithStarred(in StarredList) *RssRender {
 
 func NewRssRederWithFollower(in FollowerList) *RssRender {
 	r := new(RssRender)
-	r.RssTitle = "Github Starred List"
-	r.RssLink = "http://www.111.com"
-	r.RssDesc = "RSS for Github Starred List"
+	r.RssTitle = "Github Follower List"
+	r.RssLink = "http://github.com"
+	r.RssDesc = "RSS for Github Follower List"
+	r.RssNow = template.HTML(getNow())
+
+	for _, v := range in {
+		// log.Println("Follower:", v)
+		var item Item
+		item.Title = v.Login
+		item.Desc = v.Login
+		item.Link = v.URL
+		item.PubDate = template.HTML(getNow())
+		r.Items = append(r.Items, item)
+	}
+
+	return r
+}
+
+func NewRssRederWithFollowing(in FollowingList) *RssRender {
+	r := new(RssRender)
+	r.RssTitle = "Github Following List"
+	r.RssLink = "http://github.com"
+	r.RssDesc = "RSS for Github Following List"
 	r.RssNow = template.HTML(getNow())
 
 	for _, v := range in {

@@ -12,10 +12,7 @@
 
 package githubrss
 
-import (
-	"encoding/json"
-	"log"
-)
+import "encoding/json"
 
 type GithubRss struct {
 	Id string
@@ -44,16 +41,32 @@ func (g *GithubRss) GetStarred(count int) (string, error) {
 		return "", err
 	}
 
-	log.Println("Obj=", len(result), result[1])
+	// log.Println("Obj=", len(result), result[1])
 	r := NewRssRederWithStarred(result)
 	return r.render(), nil
 }
 
 func (g *GithubRss) GetFollower(count int) (string, error) {
-	//get response
-	body, err := g.httpClient.GetStarredObj(count)
+	body, err := g.httpClient.GetFollowerObj(count)
 
-	var result StarredList
+	var result FollowerList
+	err = json.Unmarshal(body, &result)
+
+	// log.Println("Body:", string(body), err, result)
+
+	if err != nil {
+		//error
+		return "", err
+	}
+
+	r := NewRssRederWithFollower(result)
+	return r.render(), nil
+}
+
+func (g *GithubRss) GetFollowing(count int) (string, error) {
+	body, err := g.httpClient.GetFollowingObj(count)
+
+	var result FollowingList
 	err = json.Unmarshal(body, &result)
 
 	if err != nil {
@@ -61,6 +74,6 @@ func (g *GithubRss) GetFollower(count int) (string, error) {
 		return "", err
 	}
 
-	log.Println("Obj=", result)
-	return string(body), nil
+	r := NewRssRederWithFollowing(result)
+	return r.render(), nil
 }
