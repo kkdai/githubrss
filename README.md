@@ -1,14 +1,13 @@
-githubrss:
+githubrss:A github notification (starred, follower, followed) RSS feed in Golang
 ==============
 
  [![GoDoc](https://godoc.org/github.com/kkdai/nfa?status.svg)](https://godoc.org/github.com/kkdai/nfa)  [![Build Status](https://travis-ci.org/kkdai/nfa.svg?branch=master)](https://travis-ci.org/kkdai/nfa)
 ![](https://validator.w3.org/feed/images/valid-rss-rogers.png)
 
 
-How to use it?
-=============
+Github RSS will help you to generate RSS feed string of specific user ID with  (Starred, Following, Followed).
 
-
+You can use this to write a web service to host specific RSS for other services like [IFTTT](http://ifttt.com)
 
 
 Installation and Usage
@@ -43,17 +42,27 @@ func main() {
 		fmt.Println("Not get starred response:", err)
 	}
 
-	fmt.Println("Starred:", ret)
+	fmt.Println("Starred RSS:", ret)
 
 
 	//Get latest 5 follower RSS
-	_, err = g.GetFollower(5)
+	ret, err = g.GetFollower(5)
 
 	if err != nil {
 		fmt.Println("Not get follower response:", err)
 	}
 
-	fmt.Println(" get follower:", err)
+	fmt.Println("Follower RSS:", ret)
+
+
+	//Get latest 5 following RSS
+	ret, err = g.GetFollowing(5)
+
+	if err != nil {
+		fmt.Println("Not get following response:", err)
+	}
+
+	fmt.Println("Following RSS:", ret)
 }
 
 ```
@@ -77,4 +86,15 @@ It is one of my [project 52](https://github.com/kkdai/project52).
 License
 ---------------
 
-This package is licensed under MIT license. See LICENSE for details.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
