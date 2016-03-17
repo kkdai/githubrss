@@ -1,10 +1,8 @@
-github-star-to-rss:
+githubrss:
 ==============
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/kkdai/nfa/master/LICENSE)  [![GoDoc](https://godoc.org/github.com/kkdai/nfa?status.svg)](https://godoc.org/github.com/kkdai/nfa)  [![Build Status](https://travis-ci.org/kkdai/nfa.svg?branch=master)](https://travis-ci.org/kkdai/nfa)
-
-
-![image](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/NFASimpleExample.svg/423px-NFASimpleExample.svg.png)
+ [![GoDoc](https://godoc.org/github.com/kkdai/nfa?status.svg)](https://godoc.org/github.com/kkdai/nfa)  [![Build Status](https://travis-ci.org/kkdai/nfa.svg?branch=master)](https://travis-ci.org/kkdai/nfa)
+![](https://validator.w3.org/feed/images/valid-rss-rogers.png)
 
 
 How to use it?

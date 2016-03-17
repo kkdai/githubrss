@@ -22,7 +22,7 @@ import (
 type Item struct {
 	Title   string
 	Desc    string
-	PubDate string
+	PubDate template.HTML
 	Link    string
 }
 
@@ -30,8 +30,13 @@ type RssRender struct {
 	RssTitle string
 	RssLink  string
 	RssDesc  string
-	RssNow   string
+	RssNow   template.HTML
 	Items    []Item
+}
+
+func getNow() string {
+	// zone, _ := time.LoadLocation("UTC")
+	return time.Now().Format(time.RFC822Z)
 }
 
 func NewRssRederWithStarred(in StarredList) *RssRender {
@@ -39,7 +44,7 @@ func NewRssRederWithStarred(in StarredList) *RssRender {
 	r.RssTitle = "Github Starred List"
 	r.RssLink = "http://www.111.com"
 	r.RssDesc = "RSS for Github Starred List"
-	r.RssNow = time.Now().String()
+	r.RssNow = template.HTML(getNow())
 
 	log.Println("Len:", len(in))
 	for _, v := range in {
@@ -47,7 +52,7 @@ func NewRssRederWithStarred(in StarredList) *RssRender {
 		item.Title = v.FullName
 		item.Desc = v.Description
 		item.Link = v.URL
-
+		item.PubDate = template.HTML(v.CreatedAt.Format(time.RFC822Z))
 		r.Items = append(r.Items, item)
 	}
 
@@ -59,14 +64,14 @@ func NewRssRederWithFollower(in FollowerList) *RssRender {
 	r.RssTitle = "Github Starred List"
 	r.RssLink = "http://www.111.com"
 	r.RssDesc = "RSS for Github Starred List"
-	r.RssNow = time.Now().String()
+	r.RssNow = template.HTML(getNow())
 
 	for _, v := range in {
 		var item Item
 		item.Title = v.Login
 		item.Desc = v.Login
 		item.Link = v.URL
-
+		item.PubDate = template.HTML(getNow())
 		r.Items = append(r.Items, item)
 	}
 
