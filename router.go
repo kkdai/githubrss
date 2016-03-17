@@ -20,10 +20,18 @@ const (
 	FollowerAPI  string = "followers"
 )
 
-func getStarredURL(id string) string {
-	return fmt.Sprintf("%s/%s/%s", GithubAPIURL, id, StarredAPI)
+func getWithCount(url string, count int) string {
+	if count > 0 {
+		url = url + fmt.Sprintf("?page=1&per_page=%d", count)
+	}
+
+	return url
 }
 
-func getFollowerURL(id string) string {
-	return fmt.Sprintf("%s/%s/%s", GithubAPIURL, id, StarredAPI)
+func getStarredURL(id string, count int) string {
+	return getWithCount(fmt.Sprintf("%s/%s/%s", GithubAPIURL, id, StarredAPI), count)
+}
+
+func getFollowerURL(id string, count int) string {
+	return getWithCount(fmt.Sprintf("%s/%s/%s", GithubAPIURL, id, StarredAPI), count)
 }

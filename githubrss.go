@@ -44,8 +44,9 @@ func (g *GithubRss) GetStarred(count int) (string, error) {
 		return "", err
 	}
 
-	log.Println("Obj=", result[1])
-	return string(body), nil
+	log.Println("Obj=", len(result), result[1])
+	r := NewRssRederWithStarred(result)
+	return r.render(), nil
 }
 
 func (g *GithubRss) GetFollower(count int) (string, error) {

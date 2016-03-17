@@ -46,6 +46,7 @@ Inspired By
 - [https://github.com/lukeforeman/fever-google-starred-importer/blob/master/import.php](https://github.com/lukeforeman/fever-google-starred-importer/blob/master/import.php)
 - [http://stackoverflow.com/questions/14893287/creating-an-rss-feed-for-github-stars](http://stackoverflow.com/questions/14893287/creating-an-rss-feed-for-github-stars)
 - [https://github.com/thomasyung/twitter-json-to-rss/blob/master/twitter_json_to_rss.php](https://github.com/thomasyung/twitter-json-to-rss/blob/master/twitter_json_to_rss.php)
+- [https://gist.github.com/Sanjo/4ed367c68acc27fd9a18](https://gist.github.com/Sanjo/4ed367c68acc27fd9a18)
 
 
 Project52

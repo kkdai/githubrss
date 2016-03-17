@@ -1,0 +1,21 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ .RssTitle }}</title>
+    <link>{{ .RssLink }}</link>
+    <atom:link href="{{ .RssLink }}" rel="self" type="application/rss+xml" />
+    <description>{{ .RssDesc }}</description>
+    <pubDate>{{ .RssNow }}</pubDate>
+    <lastBuildDate>{{ .RssNow }}</lastBuildDate>
+
+{{ range .Items }}
+      <item>
+        <title>{{ .Title }}</title>
+        <description>{{ .Desc }}</description>
+        <pubDate>{{ .PubDate }}</pubDate>
+        <guid>{{ .Link }}</guid>
+        <link>{{ .Link }}</link>
+      </item>
+{{ end }}      
+
+  </channel>
+</rss>

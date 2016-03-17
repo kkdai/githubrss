@@ -13,7 +13,6 @@
 package githubrss
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -30,23 +29,13 @@ func NewClient(userId string) *client {
 }
 
 func (c *client) GetStarredObj(resultCount int) ([]byte, error) {
-	url := getStarredURL(c.userId)
-
-	if resultCount > 0 {
-		url = url + fmt.Sprintf("??page=1&per_page=%d", resultCount)
-	}
-
+	url := getStarredURL(c.userId, resultCount)
 	log.Println("URL=", url)
 	return getHttpResponse(url)
 }
 
 func (c *client) GetFollowerObj(resultCount int) ([]byte, error) {
-	url := getFollowerURL(c.userId)
-
-	if resultCount > 0 {
-		url = url + fmt.Sprintf("??page=1&per_page=%d", resultCount)
-	}
-
+	url := getFollowerURL(c.userId, resultCount)
 	log.Println("URL=", url)
 	return getHttpResponse(url)
 }

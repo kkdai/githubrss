@@ -7,11 +7,19 @@ import (
 
 func TestBasicConnect(t *testing.T) {
 	g := NewGithubRss("kkdai")
-	_, err := g.GetStarred(5)
+	ret, err := g.GetStarred(5)
 
 	if err != nil {
-		t.Error("Not get response:", err)
+		t.Error("Not get starred response:", err)
 	}
 
-	log.Println(" get starred:", err)
+	log.Println("Starred:", ret)
+
+	// _, err = g.GetFollower(5)
+
+	// if err != nil {
+	// 	t.Error("Not get follower response:", err)
+	// }
+
+	// log.Println(" get follower:", err)
 }
