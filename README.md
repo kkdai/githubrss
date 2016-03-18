@@ -1,7 +1,7 @@
 githubrss:A github notification (starred, follower, followed) RSS feed in Golang
 ==============
 
- [![GoDoc](https://godoc.org/github.com/kkdai/nfa?status.svg)](https://godoc.org/github.com/kkdai/nfa)  [![Build Status](https://travis-ci.org/kkdai/nfa.svg?branch=master)](https://travis-ci.org/kkdai/nfa)
+ [![GoDoc](https://godoc.org/github.com/kkdai/githubrss?status.svg)](https://godoc.org/github.com/kkdai/githubrss)  [![Build Status](https://travis-ci.org/kkdai/githubrss.svg?branch=master)](https://travis-ci.org/kkdai/githubrss)
 ![](https://validator.w3.org/feed/images/valid-rss-rogers.png)
 
 
