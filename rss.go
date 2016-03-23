@@ -46,7 +46,7 @@ func NewRssRederWithStarred(in StarredList) *RssRender {
 	r.RssDesc = "RSS for Github Starred List"
 	r.RssNow = template.HTML(getNow())
 
-	log.Println("Len:", len(in))
+	// log.Println("Len:", len(in))
 	for _, v := range in {
 		var item Item
 		item.Title = v.FullName
@@ -99,7 +99,7 @@ func NewRssRederWithFollowing(in FollowingList) *RssRender {
 }
 
 func (r *RssRender) render() string {
-	t, err := template.ParseFiles("atom.tmpl")
+	t, err := template.New("atom").Parse(AtomTmpl)
 	if err != nil {
 		log.Fatal(err)
 	}
